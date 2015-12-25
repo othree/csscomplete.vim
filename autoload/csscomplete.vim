@@ -105,8 +105,32 @@ elseif borders[max(keys(borders))] == 'colon'
 	" Get name of property
 	let prop = tolower(matchstr(line, '\zs[a-zA-Z-]*\ze\s*:[^:]\{-}$'))
 
-	if prop == 'azimuth'
-		let values = ["left-side", "far-left", "left", "center-left", "center", "center-right", "right", "far-right", "right-side", "behind", "leftwards", "rightwards"]
+	if prop == 'additive-symbols'
+		let values = []
+  elseif prop == 'align-content'
+    let values = ["flex-start", "flex-end", "center", "space-between", "space-around", "stretch"]
+  elseif prop == 'align-items'
+    let values = ["flex-start", "flex-end", "center", "baseline", "stretch"]
+  elseif prop == 'align-self'
+    let values = ["auto", "flex-start", "flex-end", "center", "baseline", "stretch"]
+  elseif prop == 'animation'
+    let values = []
+  elseif prop == 'animation-delay'
+    let values = []
+  elseif prop == 'animation-direction'
+    let values = ["normal", "reverse", "alternate", "alternate-reverse"]
+  elseif prop == 'animation-duration'
+    let values = []
+  elseif prop == 'animation-fill-mode'
+    let values = ["none", "forwards", "backwards", "both"]
+  elseif prop == 'animation-iteration-count'
+    let values = []
+  elseif prop == 'animation-name'
+    let values = []
+  elseif prop == 'animation-play-state'
+    let values = ["running", "paused"]
+  elseif prop == 'animation-timing-function'
+    let values = ["cubic-bezier(", "steps(", "linear", "ease", "ease-in", "ease-in-out", "ease-out", "step-start", "step-end"]
 	elseif prop == 'background-attachment'
 		let values = ["scroll", "fixed"]
 	elseif prop == 'background-color'
