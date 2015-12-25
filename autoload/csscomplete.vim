@@ -151,11 +151,11 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'background-size'
       let values = ["auto", "contain", "cover"]
     elseif prop == 'background'
-      let values = ["url(", "scroll", "fixed", "transparent", "rgb(", "#", "none", "top", "center", "bottom" , "left", "right", "repeat", "repeat-x", "repeat-y", "no-repeat", "auto", "contain", "cover"]
+      let values = ["url(", "scroll", "fixed", "transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#", "none", "top", "center", "bottom" , "left", "right", "repeat", "repeat-x", "repeat-y", "no-repeat", "auto", "contain", "cover"]
     elseif prop == 'border-collapse'
       let values = ["collapse", "separate"]
     elseif prop == 'border-color'
-      let values = ["rgb(", "#", "transparent"]
+      let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     elseif prop == 'border-spacing'
       return []
     elseif prop == 'border-style'
@@ -167,12 +167,12 @@ function! csscomplete#CompleteCSS(findstart, base)
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+\%([a-zA-Z]\+\)\?$'
         let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+[a-zA-Z]\+\s\+\%([a-zA-Z(]\+\)\?$'
-        let values = ["rgb(", "#", "transparent"]
+        let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
       else
         return []
       endif
     elseif prop =~ 'border-\%(top\|right\|bottom\|left\)-color'
-      let values = ["rgb(", "#", "transparent"]
+      let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     elseif prop =~ 'border-\%(top\|right\|bottom\|left\)-style'
       let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     elseif prop =~ 'border-\%(top\|right\|bottom\|left\)-width'
@@ -186,7 +186,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+\%([a-zA-Z]\+\)\?$'
         let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+[a-zA-Z]\+\s\+\%([a-zA-Z(]\+\)\?$'
-        let values = ["rgb(", "#", "transparent"]
+        let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
       else
         return []
       endif
@@ -199,7 +199,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'clip'
       let values = ["auto", "rect("]
     elseif prop == 'color'
-      let values = ["rgb(", "#"]
+      let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     elseif prop == 'content'
       let values = ["normal", "attr(", "open-quote", "close-quote", "no-open-quote", "no-close-quote"]
     elseif prop =~ 'counter-\%(increment\|reset\)$'
@@ -261,7 +261,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'orphans'
       return []
     elseif prop == 'outline-color'
-      let values = ["rgb(", "#"]
+      let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     elseif prop == 'outline-style'
       let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     elseif prop == 'outline-width'
@@ -269,7 +269,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'outline'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^\%([a-zA-Z0-9,()#]\+\)\?$'
-        let values = ["rgb(", "#"]
+        let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
       elseif vals =~ '^[a-zA-Z0-9,()#]\+\s\+\%([a-zA-Z]\+\)\?$'
         let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
       elseif vals =~ '^[a-zA-Z0-9,()#]\+\s\+[a-zA-Z]\+\s\+\%([a-zA-Z(]\+\)\?$'
