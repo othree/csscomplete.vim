@@ -152,15 +152,9 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto", "contain", "cover"]
     elseif prop == 'background'
       let values = ["url(", "scroll", "fixed", "transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#", "none", "top", "center", "bottom" , "left", "right", "repeat", "repeat-x", "repeat-y", "no-repeat", "auto", "contain", "cover"]
-    elseif prop == 'border-collapse'
-      let values = ["collapse", "separate"]
-    elseif prop == 'border-color'
-      let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
-    elseif prop == 'border-spacing'
-      return []
     elseif prop == 'border-style'
       let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
-    elseif prop =~ 'border-\%(top\|right\|bottom\|left\)$'
+    elseif prop =~ 'border-\%(top\|right\|bottom\|left\|block-start\|block-end\)$'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^\%([a-zA-Z0-9.]\+\)\?$'
         let values = ["thin", "thick", "medium"]
@@ -171,11 +165,11 @@ function! csscomplete#CompleteCSS(findstart, base)
       else
         return []
       endif
-    elseif prop =~ 'border-\%(top\|right\|bottom\|left\)-color'
+    elseif prop =~ 'border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-color'
       let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
-    elseif prop =~ 'border-\%(top\|right\|bottom\|left\)-style'
+    elseif prop =~ 'border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-style'
       let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
-    elseif prop =~ 'border-\%(top\|right\|bottom\|left\)-width'
+    elseif prop =~ 'border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-width'
       let values = ["thin", "thick", "medium"]
     elseif prop == 'border-width'
       let values = ["thin", "thick", "medium"]
