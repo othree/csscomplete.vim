@@ -134,7 +134,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'background-attachment'
       let values = ["scroll", "fixed"]
     elseif prop == 'background-color'
-      let values = ["transparent", "rgb(", "#"]
+      let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     elseif prop == 'background-image'
       let values = ["url(", "none"]
     elseif prop == 'background-position'
@@ -148,8 +148,10 @@ function! csscomplete#CompleteCSS(findstart, base)
       endif
     elseif prop == 'background-repeat'
       let values = ["repeat", "repeat-x", "repeat-y", "no-repeat"]
+    elseif prop == 'background-size'
+      let values = ["auto", "contain", "cover"]
     elseif prop == 'background'
-      let values = ["url(", "scroll", "fixed", "transparent", "rgb(", "#", "none", "top", "center", "bottom" , "left", "right", "repeat", "repeat-x", "repeat-y", "no-repeat"]
+      let values = ["url(", "scroll", "fixed", "transparent", "rgb(", "#", "none", "top", "center", "bottom" , "left", "right", "repeat", "repeat-x", "repeat-y", "no-repeat", "auto", "contain", "cover"]
     elseif prop == 'border-collapse'
       let values = ["collapse", "separate"]
     elseif prop == 'border-color'
