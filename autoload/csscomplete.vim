@@ -237,7 +237,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'direction'
       let values = ["ltr", "rtl"]
     elseif prop == 'display'
-      let values = ["inline", "block", "list-item", "run-in", "inline-block", "table", "inline-table", "table-row-group", "table-header-group", "table-footer-group", "table-row", "table-column-group", "table-column", "table-cell", "table-caption", "none"]
+      let values = ["inline", "block", "list-item", "inline-list-item", "run-in", "inline-block", "table", "inline-table", "table-row-group", "table-header-group", "table-footer-group", "table-row", "table-column-group", "table-column", "table-cell", "table-caption", "none", "flex", "inline-flex", "grid", "inline-grid", "ruby", "ruby-base", "ruby-text", "ruby-base-container", "ruby-text-container", "contents"]
     elseif prop == 'elevation'
       let values = ["below", "level", "above", "higher", "lower"]
     elseif prop == 'empty-cells'
