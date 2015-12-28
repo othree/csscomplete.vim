@@ -186,6 +186,16 @@ function! csscomplete#CompleteCSS(findstart, base)
       endif
     elseif prop == 'bottom'
       let values = ["auto"]
+    elseif prop == 'box-decoration-break'
+      let values = ["slice", "clone"]
+    elseif prop == 'box-shadow'
+      let values = ["inset"]
+    elseif prop == 'box-sizing'
+      let values = ["border-box", "content-box"]
+    elseif prop =~ 'break-\%(before\|after\)'
+      let values = ["auto", "always", "avoid", "left", "right", "page", "column", "region", "recto", "verso", "avoid-page", "avoid-column", "avoid-region"]
+    elseif prop == 'break-inside'
+      let values = ["auto", "avoid", "avoid-page", "avoid-column", "avoid-region"]
     elseif prop == 'caption-side'
       let values = ["top", "bottom"]
     elseif prop == 'clear'
