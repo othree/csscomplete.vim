@@ -108,6 +108,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     let color_values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     let border_type_values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     let border_width_values = ["thin", "thick", "medium"]
+    let list_style_type_values = ["decimal", "decimal-leading-zero", "arabic-indic", "armenian", "upper-armenian", "lower-armenian", "bengali", "cambodian", "khmer", "cjk-decimal", "devanagari", "georgian", "gujarati", "gurmukhi", "hebrew", "kannada", "lao", "malayalam", "mongolian", "myanmar", "oriya", "persian", "lower-roman", "upper-roman", "tamil", "telugu", "thai", "tibetan", "lower-alpha", "lower-latin", "upper-alpha", "upper-latin", "cjk-earthly-branch", "cjk-heavenly-stem", "lower-greek", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "disc", "circle", "square", "disclosure-open", "disclosure-closed"]
 
     if prop == 'additive-symbols'
       let values = []
@@ -242,16 +243,56 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["below", "level", "above", "higher", "lower"]
     elseif prop == 'empty-cells'
       let values = ["show", "hide"]
+    elseif prop == 'fallback'
+      let values = list_style_type_values
+    elseif prop == 'filter'
+      let values = ["blur(", "brightness(", "contrast(", "drop-shadow(", "grayscale(", "hue-rotate(", "invert(", "opacity(", "sepia(", "saturate("]
+    elseif prop == 'flex-basis'
+      let values = ["auto", "content"]
+    elseif prop == 'flex-flow'
+      let values = ["row", "row-reverse", "column", "column-reverse", "nowrap", "wrap", "wrap-reverse"]
+    elseif prop == 'flex-grow'
+      let values = []
+    elseif prop == 'flex-shrink'
+      let values = []
+    elseif prop == 'flex-wrap'
+      let values = ["nowrap", "wrap", "wrap-reverse"]
+    elseif prop == 'flex'
+      let values = ["nowrap", "wrap", "wrap-reverse"] + ["row", "row-reverse", "column", "column-reverse", "nowrap", "wrap", "wrap-reverse"] + ["auto", "content"]
     elseif prop == 'float'
       let values = ["left", "right", "none"]
     elseif prop == 'font-family'
       let values = ["sans-serif", "serif", "monospace", "cursive", "fantasy"]
+    elseif prop == 'font-feature-settings'
+      let values = ["normal", '"aalt"', '"abvf"', '"abvm"', '"abvs"', '"afrc"', '"akhn"', '"blwf"', '"blwm"', '"blws"', '"calt"', '"case"', '"ccmp"', '"cfar"', '"cjct"', '"clig"', '"cpct"', '"cpsp"', '"cswh"', '"curs"', '"cv', '"c2pc"', '"c2sc"', '"dist"', '"dlig"', '"dnom"', '"dtls"', '"expt"', '"falt"', '"fin2"', '"fin3"', '"fina"', '"flac"', '"frac"', '"fwid"', '"half"', '"haln"', '"halt"', '"hist"', '"hkna"', '"hlig"', '"hngl"', '"hojo"', '"hwid"', '"init"', '"isol"', '"ital"', '"jalt"', '"jp78"', '"jp83"', '"jp90"', '"jp04"', '"kern"', '"lfbd"', '"liga"', '"ljmo"', '"lnum"', '"locl"', '"ltra"', '"ltrm"', '"mark"', '"med2"', '"medi"', '"mgrk"', '"mkmk"', '"mset"', '"nalt"', '"nlck"', '"nukt"', '"numr"', '"onum"', '"opbd"', '"ordn"', '"ornm"', '"palt"', '"pcap"', '"pkna"', '"pnum"', '"pref"', '"pres"', '"pstf"', '"psts"', '"pwid"', '"qwid"', '"rand"', '"rclt"', '"rkrf"', '"rlig"', '"rphf"', '"rtbd"', '"rtla"', '"rtlm"', '"ruby"', '"salt"', '"sinf"', '"size"', '"smcp"', '"smpl"', '"ss01"', '"ss02"', '"ss03"', '"ss04"', '"ss05"', '"ss06"', '"ss07"', '"ss08"', '"ss09"', '"ss10"', '"ss11"', '"ss12"', '"ss13"', '"ss14"', '"ss15"', '"ss16"', '"ss17"', '"ss18"', '"ss19"', '"ss20"', '"ssty"', '"stch"', '"subs"', '"sups"', '"swsh"', '"titl"', '"tjmo"', '"tnam"', '"tnum"', '"trad"', '"twid"', '"unic"', '"valt"', '"vatu"', '"vert"', '"vhal"', '"vjmo"', '"vkna"', '"vkrn"', '"vpal"', '"vrt2"', '"zero"']
+    elseif prop == 'font-kerning'
+      let values = ["auto", "normal", "none"]
+    elseif prop == 'font-language-override'
+      let values = ["normal"]
     elseif prop == 'font-size'
       let values = ["xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "larger", "smaller"]
+    elseif prop == 'font-size-adjust'
+      let values = []
+    elseif prop == 'font-stretch'
+      let values = ["normal", "ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded"]
     elseif prop == 'font-style'
       let values = ["normal", "italic", "oblique"]
+    elseif prop == 'font-synthesis'
+      let values = ["none", "weight", "style"]
+    elseif prop == 'font-variant-alternates'
+      let values = ["normal", "historical-forms", "stylistic(", "styleset(", "character-variant(", "swash(", "ornaments(", "annotation("]
+    elseif prop == 'font-variant-caps'
+      let values = ["normal", "small-caps", "all-small-caps", "petite-caps", "all-petite-caps", "unicase", "titling-caps"]
+    elseif prop == 'font-variant-asian'
+      let values = ["normal", "ruby", "jis78", "jis83", "jis90", "jis04", "simplified", "traditional"]
+    elseif prop == 'font-variant-ligatures'
+      let values = ["normal", "none", "common-ligatures", "no-common-ligatures", "discretionary-ligatures", "no-discretionary-ligatures", "historical-ligatures", "no-historical-ligatures", "contextual", "no-contextual"]
+    elseif prop == 'font-variant-numeric'
+      let values = ["normal", "ordinal", "slashed-zero", "lining-nums", "oldstyle-nums", "proportional-nums", "tabular-nums", "diagonal-fractions", "stacked-fractions"]
+    elseif prop == 'font-variant-position'
+      let values = ["normal", "sub", "super"]
     elseif prop == 'font-variant'
-      let values = ["normal", "small-caps"]
+      let values = ["normal", "historical-forms", "stylistic(", "styleset(", "character-variant(", "swash(", "ornaments(", "annotation("] + ["small-caps", "all-small-caps", "petite-caps", "all-petite-caps", "unicase", "titling-caps"] + ["ruby", "jis78", "jis83", "jis90", "jis04", "simplified", "traditional"] + ["none", "common-ligatures", "no-common-ligatures", "discretionary-ligatures", "no-discretionary-ligatures", "historical-ligatures", "no-historical-ligatures", "contextual", "no-contextual"] + ["ordinal", "slashed-zero", "lining-nums", "oldstyle-nums", "proportional-nums", "tabular-nums", "diagonal-fractions", "stacked-fractions"] + ["sub", "super"]
     elseif prop == 'font-weight'
       let values = ["normal", "bold", "bolder", "lighter", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
     elseif prop == 'font'
@@ -269,9 +310,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'list-style-position'
       let values = ["inside", "outside"]
     elseif prop == 'list-style-type'
-      let values = ["disc", "circle", "square", "decimal", "decimal-leading-zero", "lower-roman", "upper-roman", "lower-latin", "upper-latin", "none"]
+      let values = list_style_type_values
     elseif prop == 'list-style'
-      return []
+      let values = list_style_type_values + ["inside", "outside"] + ["url(", "none"]
     elseif prop == 'margin'
       let values = ["auto"]
     elseif prop =~ 'margin-\%(right\|left\|top\|bottom\)$'
