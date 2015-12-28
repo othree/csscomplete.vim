@@ -105,6 +105,10 @@ function! csscomplete#CompleteCSS(findstart, base)
     " Get name of property
     let prop = tolower(matchstr(line, '\zs[a-zA-Z-]*\ze\s*:[^:]\{-}$'))
 
+    let color_values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
+    let border_type_values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
+    let border_width_values = ["thin", "thick", "medium"]
+
     if prop == 'additive-symbols'
       let values = []
     elseif prop == 'align-content'
@@ -202,14 +206,32 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["none", "left", "right", "both"]
     elseif prop == 'clip'
       let values = ["auto", "rect("]
+    elseif prop == 'clip-path'
+      let values = ["fill-box", "stroke-box", "view-box", "none"]
     elseif prop == 'color'
       let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
+    elseif prop == 'columns'
+      let values = []
+    elseif prop == 'column-count'
+      let values = ['auto']
+    elseif prop == 'column-fill'
+      let values = ['auto', 'balance']
+    elseif prop == 'column-rule-color'
+      let values = color_values
+    elseif prop == 'column-rule-style'
+      let values = border_type_values
+    elseif prop == 'column-rule-width'
+      let values = border_width_values
+    elseif prop == 'column-rule'
+      let values = color_values + border_type_values + border_width_values
+    elseif prop == 'column-span'
+      let values = ["none", "all"]
+    elseif prop == 'column-width'
+      let values = ["auto"]
     elseif prop == 'content'
       let values = ["normal", "attr(", "open-quote", "close-quote", "no-open-quote", "no-close-quote"]
     elseif prop =~ 'counter-\%(increment\|reset\)$'
       let values = ["none"]
-    elseif prop =~ '^\%(cue-after\|cue-before\|cue\)$'
-      let values = ["url(", "none"]
     elseif prop == 'cursor'
       let values = ["url(", "auto", "crosshair", "default", "pointer", "move", "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize", "text", "wait", "help", "progress"]
     elseif prop == 'direction'
