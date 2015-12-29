@@ -329,16 +329,22 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = list_style_type_values + ["inside", "outside"] + ["url(", "none"]
     elseif prop == 'margin'
       let values = ["auto"]
-    elseif prop =~ 'margin-\%(right\|left\|top\|bottom\)$'
+    elseif prop =~ 'margin-\%(right\|left\|top\|bottom\|block-start\|block-end\|inline-start\|inline-end\)$'
       let values = ["auto"]
-    elseif prop == 'max-height'
+    elseif prop == 'marks'
+      let values = ["crop", "cross", "none"]
+    elseif prop == 'mask'
+      let values = ["url("]
+    elseif prop == 'mask-type'
+      let values = ["luminance", "alpha"]
+    elseif prop == '\%(max\|min\)-\%(block\|inline\)-size'
+      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
+    elseif prop == '\%(max\|min\)-\%(height\|width\)'
+      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
+    elseif prop == '\%(max\|min\)-zoom'
       let values = ["auto"]
-    elseif prop == 'max-width'
-      let values = ["none"]
-    elseif prop == 'min-height'
-      let values = ["none"]
-    elseif prop == 'min-width'
-      let values = ["none"]
+    elseif prop == 'mix-blend-mode'
+      let values = ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"]
     elseif prop == 'orphans'
       return []
     elseif prop == 'outline-color'
