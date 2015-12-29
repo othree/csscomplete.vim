@@ -301,6 +301,16 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
     elseif prop =~ '^\%(left\|rigth\)$'
       let values = ["auto"]
+    elseif prop == 'image-rendering'
+      let values = ["auto", "crisp-edges", "pixelated"]
+    elseif prop == 'image-orientation'
+      let values = ["from-image", "flip"]
+    elseif prop == 'ime-mode'
+      let values = ["auto", "normal", "active", "inactive", "disabled"]
+    elseif prop == 'inline-size'
+      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
+    elseif prop == 'isolation'
+      let values = ["auto", "isolate"]
     elseif prop == 'letter-spacing'
       let values = ["normal"]
     elseif prop == 'line-height'
