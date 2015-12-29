@@ -311,6 +311,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
     elseif prop == 'isolation'
       let values = ["auto", "isolate"]
+    elseif prop == 'justify-content'
+      let values = ["flex-start", "flex-end", "center", "space-between", "space-around"]
     elseif prop == 'letter-spacing'
       let values = ["normal"]
     elseif prop == 'line-height'
