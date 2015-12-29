@@ -315,6 +315,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["flex-start", "flex-end", "center", "space-between", "space-around"]
     elseif prop == 'letter-spacing'
       let values = ["normal"]
+    elseif prop == 'line-break'
+      let values = ["auto", "loose", "normal", "strict"]
     elseif prop == 'line-height'
       let values = ["normal"]
     elseif prop == 'list-style-image'
