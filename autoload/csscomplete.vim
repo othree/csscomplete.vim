@@ -473,7 +473,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       " trying to complete pseudo-(class|element)
       let element = tolower(matchstr(line, '\zs[a-zA-Z1-6]*\ze:[^:[:space:]]\{-}$'))
       if stridx(',a,abbr,acronym,address,area,b,base,bdo,big,blockquote,body,br,button,caption,cite,code,col,colgroup,dd,del,dfn,div,dl,dt,em,fieldset,form,head,h1,h2,h3,h4,h5,h6,hr,html,i,img,input,ins,kbd,label,legend,li,link,map,meta,noscript,object,ol,optgroup,option,p,param,pre,q,samp,script,select,small,span,strong,style,sub,sup,table,tbody,td,textarea,tfoot,th,thead,title,tr,tt,ul,var,', ','.element.',') > -1
-        let values = ["first-child", "link", "visited", "hover", "active", "focus", "lang", "first-line", "first-letter", "before", "after", "selection", "backdrop"]
+        let values = ["active", "any", "checked", "default", "dir(", "disabled", "empty", "enabled", "first", "first-child", "first-of-type", "fullscreen", "focus", "hover", "indeterminate", "in-range", "invalid", "lang(", "last-child", "last-of-type", "left", "link", "not(", "nth-child(", "nth-last-child(", "nth-last-of-type(", "nth-of-type(", "only-child", "only-of-type", "optional", "out-of-range", "read-only", "read-write", "required", "right", "root", "scope", "target", "valid", "visited", "first-line", "first-letter", "before", "after", "selection", "backdrop"]
       else
         return []
       endif
