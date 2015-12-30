@@ -374,26 +374,28 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["normal", "break-word"]
     elseif prop =~ 'overflow\%(-x\|-y\)\='
       let values = ["visible", "hidden", "scroll", "auto"]
+    elseif prop == 'pad'
+      return []
     elseif prop == 'padding'
       return []
-    elseif prop =~ 'padding-\%(top\|right\|bottom\|left\)$'
+    elseif prop =~ 'padding-\%(top\|right\|bottom\|left\|inline-start\|inline-end\|block-start\|block-end\)$'
       return []
     elseif prop =~ 'page-break-\%(after\|before\)$'
-      let values = ["auto", "always", "avoid", "left", "right"]
+      let values = ["auto", "always", "avoid", "left", "right", "recto", "verso"]
     elseif prop == 'page-break-inside'
       let values = ["auto", "avoid"]
     elseif prop =~ 'pause-\%(after\|before\)$'
       return []
-    elseif prop == 'pause'
-      return []
-    elseif prop == 'pitch-range'
-      return []
-    elseif prop == 'pitch'
-      let values = ["x-low", "low", "medium", "high", "x-high"]
-    elseif prop == 'play-during'
-      let values = ["url(", "mix", "repeat", "auto", "none"]
+    elseif prop == 'perspective'
+      return ["none"]
+    elseif prop == 'perspective-origin'
+      return ["top", "bottom", "left", "center", " right"]
+    elseif prop == 'pointer-events'
+      return ["auto", "none", "visiblePainted", "visibleFill", "visibleStroke", "visible", "painted", "fill", "stroke", "all"]
     elseif prop == 'position'
-      let values = ["static", "relative", "absolute", "fixed"]
+      let values = ["static", "relative", "absolute", "fixed", "sticky"]
+    elseif prop == 'prefix'
+      let values = []
     elseif prop == 'quotes'
       let values = ["none"]
     elseif prop == 'richness'
