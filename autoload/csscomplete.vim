@@ -398,18 +398,16 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = []
     elseif prop == 'quotes'
       let values = ["none"]
-    elseif prop == 'richness'
-      return []
-    elseif prop == 'speak-header'
-      let values = ["once", "always"]
-    elseif prop == 'speak-numeral'
-      let values = ["digits", "continuous"]
-    elseif prop == 'speak-punctuation'
-      let values = ["code", "none"]
-    elseif prop == 'speak'
-      let values = ["normal", "none", "spell-out"]
-    elseif prop == 'speech-rate'
-      let values = ["x-slow", "slow", "medium", "fast", "x-fast", "faster", "slower"]
+    elseif prop == 'range'
+      return ["auto", "infinite"]
+    elseif prop == 'resize'
+      return ["none", "both", "horizontal", "vertical"]
+    elseif prop == 'ruby-align'
+      return ["start", "center", "space-between", "space-around"]
+    elseif prop == 'ruby-merge'
+      return ["separate", "collapse", "auto"]
+    elseif prop == 'ruby-position'
+      return ["over", "under", "inter-character"]
     elseif prop == 'stress'
       return []
     elseif prop == 'table-layout'
