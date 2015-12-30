@@ -438,6 +438,7 @@ function! csscomplete#CompleteCSS(findstart, base)
         let values = list_style_type_values
       else
         let values = ["cyclic", "numeric", "alphabetic", "symbolic", "additive", "fixed", "extends"]
+      endif
     elseif prop == 'table-layout'
       let values = ["auto", "fixed"]
     elseif prop == 'text-align'
