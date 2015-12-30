@@ -345,8 +345,14 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto"]
     elseif prop == 'mix-blend-mode'
       let values = ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"]
+    elseif prop == 'opacity'
+      return []
+    elseif prop == 'orientation'
+      return ["auto", "portrait", "landscape"]
     elseif prop == 'orphans'
       return []
+    elseif prop == 'outline-offset'
+      let values = []
     elseif prop == 'outline-color'
       let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     elseif prop == 'outline-style'
@@ -364,7 +370,9 @@ function! csscomplete#CompleteCSS(findstart, base)
       else
         return []
       endif
-    elseif prop == 'overflow'
+    elseif prop == 'overflow-wrap'
+      let values = ["normal", "break-word"]
+    elseif prop =~ 'overflow\%(-x\|-y\)\='
       let values = ["visible", "hidden", "scroll", "auto"]
     elseif prop == 'padding'
       return []
