@@ -408,8 +408,36 @@ function! csscomplete#CompleteCSS(findstart, base)
       return ["separate", "collapse", "auto"]
     elseif prop == 'ruby-position'
       return ["over", "under", "inter-character"]
-    elseif prop == 'stress'
+    elseif prop == 'scroll-behavior'
+      return ["auto", "smooth"]
+    elseif prop == 'scroll-snap-coordinate'
+      return ["none"]
+    elseif prop == 'scroll-snap-destination'
       return []
+    elseif prop == 'scroll-snap-points-\%(x\|y\)$'
+      return ["none", "repeat("]
+    elseif prop == 'scroll-snap-type\%(-x\|-y\)\=$'
+      return ["none", "mandatory", "proximity"]
+    elseif prop == 'shape-image-threshold'
+      return []
+    elseif prop == 'shape-margin'
+      return []
+    elseif prop == 'shape-outside'
+      return ["margin-box", "border-box", "padding-box", "content-box", 'inset(', 'circle(', 'ellipse(', 'polygon(', 'url(']
+    elseif prop == 'speak-as'
+      return ["auto", "bullets", "numbers", "words", "spell-out"]
+    elseif prop == 'src'
+      return ["url("]
+    elseif prop == 'suffix'
+      return []
+    elseif prop == 'symbols'
+      return []
+    elseif prop == 'system'
+      let vals = matchstr(line, '.*:\s*\zs.*')
+      if vals =~ '^extends'
+        return list_style_type_values
+      else
+        return ["cyclic", "numeric", "alphabetic", "symbolic", "additive", "fixed", "extends"]
     elseif prop == 'table-layout'
       let values = ["auto", "fixed"]
     elseif prop == 'text-align'
