@@ -348,7 +348,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'opacity'
       return []
     elseif prop == 'orientation'
-      return ["auto", "portrait", "landscape"]
+      let values = ["auto", "portrait", "landscape"]
     elseif prop == 'orphans'
       return []
     elseif prop == 'outline-offset'
@@ -387,11 +387,11 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop =~ 'pause-\%(after\|before\)$'
       return []
     elseif prop == 'perspective'
-      return ["none"]
+      let values = ["none"]
     elseif prop == 'perspective-origin'
-      return ["top", "bottom", "left", "center", " right"]
+      let values = ["top", "bottom", "left", "center", " right"]
     elseif prop == 'pointer-events'
-      return ["auto", "none", "visiblePainted", "visibleFill", "visibleStroke", "visible", "painted", "fill", "stroke", "all"]
+      let values = ["auto", "none", "visiblePainted", "visibleFill", "visibleStroke", "visible", "painted", "fill", "stroke", "all"]
     elseif prop == 'position'
       let values = ["static", "relative", "absolute", "fixed", "sticky"]
     elseif prop == 'prefix'
@@ -399,35 +399,35 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'quotes'
       let values = ["none"]
     elseif prop == 'range'
-      return ["auto", "infinite"]
+      let values = ["auto", "infinite"]
     elseif prop == 'resize'
-      return ["none", "both", "horizontal", "vertical"]
+      let values = ["none", "both", "horizontal", "vertical"]
     elseif prop == 'ruby-align'
-      return ["start", "center", "space-between", "space-around"]
+      let values = ["start", "center", "space-between", "space-around"]
     elseif prop == 'ruby-merge'
-      return ["separate", "collapse", "auto"]
+      let values = ["separate", "collapse", "auto"]
     elseif prop == 'ruby-position'
-      return ["over", "under", "inter-character"]
+      let values = ["over", "under", "inter-character"]
     elseif prop == 'scroll-behavior'
-      return ["auto", "smooth"]
+      let values = ["auto", "smooth"]
     elseif prop == 'scroll-snap-coordinate'
-      return ["none"]
+      let values = ["none"]
     elseif prop == 'scroll-snap-destination'
       return []
     elseif prop == 'scroll-snap-points-\%(x\|y\)$'
-      return ["none", "repeat("]
+      let values = ["none", "repeat("]
     elseif prop == 'scroll-snap-type\%(-x\|-y\)\=$'
-      return ["none", "mandatory", "proximity"]
+      let values = ["none", "mandatory", "proximity"]
     elseif prop == 'shape-image-threshold'
       return []
     elseif prop == 'shape-margin'
       return []
     elseif prop == 'shape-outside'
-      return ["margin-box", "border-box", "padding-box", "content-box", 'inset(', 'circle(', 'ellipse(', 'polygon(', 'url(']
+      let values = ["margin-box", "border-box", "padding-box", "content-box", 'inset(', 'circle(', 'ellipse(', 'polygon(', 'url(']
     elseif prop == 'speak-as'
-      return ["auto", "bullets", "numbers", "words", "spell-out"]
+      let values = ["auto", "bullets", "numbers", "words", "spell-out"]
     elseif prop == 'src'
-      return ["url("]
+      let values = ["url("]
     elseif prop == 'suffix'
       return []
     elseif prop == 'symbols'
@@ -435,9 +435,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'system'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^extends'
-        return list_style_type_values
+        let values = list_style_type_values
       else
-        return ["cyclic", "numeric", "alphabetic", "symbolic", "additive", "fixed", "extends"]
+        let values = ["cyclic", "numeric", "alphabetic", "symbolic", "additive", "fixed", "extends"]
     elseif prop == 'table-layout'
       let values = ["auto", "fixed"]
     elseif prop == 'text-align'
