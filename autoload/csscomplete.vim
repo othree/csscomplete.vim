@@ -109,6 +109,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     let border_type_values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     let border_width_values = ["thin", "thick", "medium"]
     let list_style_type_values = ["decimal", "decimal-leading-zero", "arabic-indic", "armenian", "upper-armenian", "lower-armenian", "bengali", "cambodian", "khmer", "cjk-decimal", "devanagari", "georgian", "gujarati", "gurmukhi", "hebrew", "kannada", "lao", "malayalam", "mongolian", "myanmar", "oriya", "persian", "lower-roman", "upper-roman", "tamil", "telugu", "thai", "tibetan", "lower-alpha", "lower-latin", "upper-alpha", "upper-latin", "cjk-earthly-branch", "cjk-heavenly-stem", "lower-greek", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "disc", "circle", "square", "disclosure-open", "disclosure-closed"]
+    let timing_functions = ["cubic-bezier(", "steps(", "linear", "ease", "ease-in", "ease-in-out", "ease-out", "step-start", "step-end"]
 
     if prop == 'additive-symbols'
       let values = []
@@ -135,7 +136,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'animation-play-state'
       let values = ["running", "paused"]
     elseif prop == 'animation-timing-function'
-      let values = ["cubic-bezier(", "steps(", "linear", "ease", "ease-in", "ease-in-out", "ease-out", "step-start", "step-end"]
+      let values = timing_functions
     elseif prop == 'background-attachment'
       let values = ["scroll", "fixed"]
     elseif prop == 'background-color'
@@ -441,16 +442,66 @@ function! csscomplete#CompleteCSS(findstart, base)
       endif
     elseif prop == 'table-layout'
       let values = ["auto", "fixed"]
-    elseif prop == 'text-align'
-      let values = ["left", "right", "center", "justify"]
-    elseif prop == 'text-decoration'
-      let values = ["none", "underline", "overline", "line-through", "blink"]
-    elseif prop == 'text-indent'
+    elseif prop == 'tab-size'
       return []
+    elseif prop == 'text-align'
+      let values = ["start", "end", "left", "right", "center", "justify", "match-parent"]
+    elseif prop == 'text-align-last'
+      let values = ["auto", "start", "end", "left", "right", "center", "justify"]
+    elseif prop == 'text-combine-upright'
+      let values = ["none", "all", "digits"]
+    elseif prop == 'text-decoration-line'
+      let values = ["none", "underline", "overline", "line-through", "blink"]
+    elseif prop == 'text-decoration-color'
+      let values = color_values
+    elseif prop == 'text-decoration-style'
+      let values = ["solid", "double", "dotted", "dashed", "wavy"]
+    elseif prop == 'text-decoration'
+      let values = ["none", "underline", "overline", "line-through", "blink"] + ["solid", "double", "dotted", "dashed", "wavy"] + color_values
+    elseif prop == 'text-emphasis-color'
+      let values = color_values
+    elseif prop == 'text-emphasis-position'
+      let values = ["over", "under", "left", "right"]
+    elseif prop == 'text-emphasis-style'
+      let values = ["none", "filled", "open", "dot", "circle", "double-circle", "triangle", "sesame"]
+    elseif prop == 'text-emphasis'
+      let values = color_values + ["over", "under", "left", "right"] + ["none", "filled", "open", "dot", "circle", "double-circle", "triangle", "sesame"]
+    elseif prop == 'text-indent'
+      let values = ["hanging", "each-line"]
+    elseif prop == 'text-orientation'
+      let values = ["mixed", "upright", "sideways", "sideways-right", "use-glyph-orientation"]
+    elseif prop == 'text-overflow'
+      let values = ["clip", "ellipsis"]
+    elseif prop == 'text-rendering'
+      let values = ["auto", "optimizeSpeed", "optimizeLegibility", "geometricPrecision"]
+    elseif prop == 'text-shadow'
+      let values = color_values
     elseif prop == 'text-transform'
-      let values = ["capitalize", "uppercase", "lowercase", "none"]
+      let values = ["capitalize", "uppercase", "lowercase", "full-width", "none"]
+    elseif prop == 'text-underline-position'
+      let values = ["auto", "under", "left", "right"]
+    elseif prop == 'touch-action'
+      let values = ["auto", "none", "pan-x", "pan-y", "manipulation", "pan-left", "pan-right", "pan-top", "pan-down"]
+    elseif prop == 'transform'
+      let values = ["matrix(", "translate(", "translateX(", "translateY(", "scale(", "scaleX(", "scaleY(", "rotate(", "skew(", "skewX(", "skewY(", "matrix3d(", "translate3d(", "translateZ(", "scale3d(", "scaleZ(", "rotate3d(", "rotateX(", "rotateY(", "rotateZ(", "perspective("]
+    elseif prop == 'transform-box'
+      let values = ["border-box", "fill-box", "view-box"]
+    elseif prop == 'transform-origin'
+      let values = ["left", "center", "right", "top", "bottom"]
+    elseif prop == 'transform-style'
+      let values = ["flat", "preserve-3d"]
     elseif prop == 'top'
       let values = ["auto"]
+    elseif prop == 'transition-property'
+      let values = ["all", "none"] + s:values
+    elseif prop == 'transition-duration'
+      return []
+    elseif prop == 'transition-delay'
+      return []
+    elseif prop == 'transition-timing-function'
+      let values = timing_functions
+    elseif prop == 'transition'
+      let values = ["all", "none"] + s:values + timing_functions
     elseif prop == 'unicode-bidi'
       let values = ["normal", "embed", "bidi-override"]
     elseif prop == 'vertical-align'
