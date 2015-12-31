@@ -1,5 +1,5 @@
 " Vim completion script
-" Language:	CSS 3
+" Language:	CSS
 " Maintainer:	othree ( othree AT gmail DOT com )
 " Maintainer:	Mikolaj Machowski ( mikmach AT wp DOT pl )
 " Last Change:	2015 Dec 31
@@ -582,9 +582,27 @@ function! csscomplete#CompleteCSS(findstart, base)
       let atrulename = matchstr(line, '.*@\zs[a-zA-Z-]\+\ze')
 
       if atrulename == 'media'
-        let values = ["screen", "print", "speech", "all", "(max-width", "(min-width", "(width", "(max-height", "(min-height", "(height", "(max-aspect-ration", "(min-aspect-ration", "(aspect-ratio", "(orientation", "(max-resolution", "(min-resolution", "(resolution", "(scan", "(grid", "(update-frequency", "(overflow-block", "(overflow-inline", "(max-color", "(min-color", "(color", "(max-color-index", "(min-color-index", "(color-index", "(monochrome", "(inverted-colors", "(pointer", "(hover", "(any-pointer", "(any-hover", "(light-level", "(scripting"]
-
         let entered_atruleafter = matchstr(line, '.*@media\s\+\zs.*$')
+
+        if entered_atruleafter =~ "([^)]*$"
+          let entered_atruleafter = matchstr(entered_atruleafter, '(\s*\zs[^)]*$')
+          let values = ["max-width", "min-width", "width", "max-height", "min-height", "height", "max-aspect-ration", "min-aspect-ration", "aspect-ratio", "orientation", "max-resolution", "min-resolution", "resolution", "scan", "grid", "update-frequency", "overflow-block", "overflow-inline", "max-color", "min-color", "color", "max-color-index", "min-color-index", "color-index", "monochrome", "inverted-colors", "pointer", "hover", "any-pointer", "any-hover", "light-level", "scripting"]
+        else
+          let values = ["screen", "print", "speech", "all", "not", "and", "("]
+        endif
+
+      elseif atrulename == 'supports'
+        let entered_atruleafter = matchstr(line, '.*@supports\s\+\zs.*$')
+
+        if entered_atruleafter =~ "([^)]*$"
+          let entered_atruleafter = matchstr(entered_atruleafter, '(\s*\zs.*$')
+          echom entered_atruleafter
+          echom "1"
+          let values = s:values
+        else
+          echom "2"
+          let values = ["("]
+        endif
 
       elseif atrulename == 'import'
         let entered_atruleafter = matchstr(line, '.*@import\s\+\zs.*$')
@@ -621,7 +639,7 @@ function! csscomplete#CompleteCSS(findstart, base)
 
     endif
 
-    let values = ["charset", "page", "media", "import", "font-face", "namespace"]
+    let values = ["charset", "page", "media", "import", "font-face", "namespace", "supports", "keyframes", "viewport"]
 
     let entered_atrule = matchstr(line, '.*@\zs[a-zA-Z-]*$')
 
