@@ -675,7 +675,6 @@ function! csscomplete#CompleteCSS(findstart, base)
           if m =~? '^"'
             let m = m[1:]
           endif
-          echom b:after
           if b:after =~? '"' && stridx(m, '"') > -1
             let m = m[0:stridx(m, '"')-1]
           endif 
