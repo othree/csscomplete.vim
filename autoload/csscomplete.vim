@@ -17,6 +17,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     while start >= 0 && line[start - 1] =~ '\%(\k\|-\)'
       let start -= 1
     endwhile
+    let b:after = line[compl_begin :]
     let b:compl_context = line[0:compl_begin]
     return start
   endif
@@ -35,6 +36,7 @@ function! csscomplete#CompleteCSS(findstart, base)
   " 6. if ! complete important
   if exists("b:compl_context")
     let line = b:compl_context
+    let after = b:after
     unlet! b:compl_context
   else
     let line = a:base
@@ -636,7 +638,6 @@ function! csscomplete#CompleteCSS(findstart, base)
           \ '"IBM01144";', '"IBM01145";', '"IBM01146";', '"IBM01147";', '"IBM01148";', '"IBM01149";', '"Big5-HKSCS";', '"IBM1047";', '"PTCP154";', '"Amiga-1251";', 
           \ '"KOI7-switched";', '"BRF";', '"TSCII";', '"windows-1250";', '"windows-1251";', '"windows-1252";', '"windows-1253";', '"windows-1254";', '"windows-1255";', 
           \ '"windows-1256";', '"windows-1257";', '"windows-1258";', '"TIS-620";']
-        ]
 
       elseif atrulename == 'namespace'
         let entered_atruleafter = matchstr(line, '.*@namespace\s\+\zs.*$')
@@ -671,8 +672,18 @@ function! csscomplete#CompleteCSS(findstart, base)
 
       for m in values
         if m =~? '^'.entered_atruleafter
+          if m =~? '^"'
+            let m = m[1:]
+          endif
+          echom b:after
+          if b:after =~? '"' && stridx(m, '"') > -1
+            let m = m[0:stridx(m, '"')-1]
+          endif 
           call add(res, m)
         elseif m =~? entered_atruleafter
+          if m =~? '^"'
+            let m = m[1:]
+          endif
           call add(res2, m)
         endif
       endfor
