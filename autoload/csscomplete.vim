@@ -503,7 +503,11 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'transition'
       let values = ["all", "none"] + s:values + timing_functions
     elseif prop == 'unicode-bidi'
-      let values = ["normal", "embed", "bidi-override"]
+      let values = ["normal", "embed", "isolate", "bidi-override", "isolate-override", "plaintext"]
+    elseif prop == 'unicode-range'
+      let values = ["U+"]
+    elseif prop == 'user-zoom'
+      let values = ["zoom", "fixed"]
     elseif prop == 'vertical-align'
       let values = ["baseline", "sub", "super", "top", "text-top", "middle", "bottom", "text-bottom"]
     elseif prop == 'visibility'
