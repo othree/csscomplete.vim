@@ -528,6 +528,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["horizontal-tb", "vertical-rl", "vertical-lr", "sideways-rl", "sideways-lr"]
     elseif prop == 'z-index'
       let values = ["auto"]
+    elseif prop == 'zoom'
+      let values = ["auto"]
     else
       " If no property match it is possible we are outside of {} and
       " trying to complete pseudo-(class|element)
