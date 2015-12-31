@@ -516,8 +516,16 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["normal", "pre", "nowrap", "pre-wrap", "pre-line"]
     elseif prop == 'widows'
       return []
+    elseif prop == 'will-change'
+      let values = ["auto", "scroll-position", "contents"] + s:values
+    elseif prop == 'word-break'
+      let values = ["normal", "break-all", "keep-all"]
     elseif prop == 'word-spacing'
       let values = ["normal"]
+    elseif prop == 'word-wrap'
+      let values = ["normal", "break-word"]
+    elseif prop == 'writing-mode'
+      let values = ["horizontal-tb", "vertical-rl", "vertical-lr", "sideways-rl", "sideways-lr"]
     elseif prop == 'z-index'
       let values = ["auto"]
     else
