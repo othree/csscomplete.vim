@@ -602,15 +602,15 @@ function! csscomplete#CompleteCSS(findstart, base)
         endif
 
       elseif atrulename == 'charset'
-        let entered_atruleafter = matchstr(line, '.*@import\s\+\zs.*$')
+        let entered_atruleafter = matchstr(line, '.*@charset\s\+\zs.*$')
         let values = ['"UTF-8";']
 
       elseif atrulename == 'namespace'
-        let entered_atruleafter = matchstr(line, '.*@import\s\+\zs.*$')
+        let entered_atruleafter = matchstr(line, '.*@namespace\s\+\zs.*$')
         let values = ["url("]
 
       elseif atrulename == 'document'
-        let entered_atruleafter = matchstr(line, '.*@import\s\+\zs.*$')
+        let entered_atruleafter = matchstr(line, '.*@document\s\+\zs.*$')
         let values = ["url(", "url-prefix(", "domain(", "regexp("]
 
       elseif atrulename == 'import'
