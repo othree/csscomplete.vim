@@ -582,7 +582,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let atrulename = matchstr(line, '.*@\zs[a-zA-Z-]\+\ze')
 
       if atrulename == 'media'
-        let values = ["screen", "tty", "tv", "projection", "handheld", "print", "braille", "aural", "all"]
+        let values = ["screen", "print", "speech", "all", "(max-width", "(min-width", "(width", "(max-height", "(min-height", "(height", "(max-aspect-ration", "(min-aspect-ration", "(aspect-ratio", "(orientation", "(max-resolution", "(min-resolution", "(resolution", "(scan", "(grid", "(update-frequency", "(overflow-block", "(overflow-inline", "(max-color", "(min-color", "(color", "(max-color-index", "(min-color-index", "(color-index", "(monochrome", "(inverted-colors", "(pointer", "(hover", "(any-pointer", "(any-hover", "(light-level", "(scripting"]
 
         let entered_atruleafter = matchstr(line, '.*@media\s\+\zs.*$')
 
@@ -621,7 +621,7 @@ function! csscomplete#CompleteCSS(findstart, base)
 
     endif
 
-    let values = ["charset", "page", "media", "import", "font-face"]
+    let values = ["charset", "page", "media", "import", "font-face", "namespace"]
 
     let entered_atrule = matchstr(line, '.*@\zs[a-zA-Z-]*$')
 
