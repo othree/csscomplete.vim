@@ -596,13 +596,22 @@ function! csscomplete#CompleteCSS(findstart, base)
 
         if entered_atruleafter =~ "([^)]*$"
           let entered_atruleafter = matchstr(entered_atruleafter, '(\s*\zs.*$')
-          echom entered_atruleafter
-          echom "1"
           let values = s:values
         else
-          echom "2"
           let values = ["("]
         endif
+
+      elseif atrulename == 'charset'
+        let entered_atruleafter = matchstr(line, '.*@import\s\+\zs.*$')
+        let values = ['"UTF-8";']
+
+      elseif atrulename == 'namespace'
+        let entered_atruleafter = matchstr(line, '.*@import\s\+\zs.*$')
+        let values = ["url("]
+
+      elseif atrulename == 'document'
+        let entered_atruleafter = matchstr(line, '.*@import\s\+\zs.*$')
+        let values = ["url(", "url-prefix(", "domain(", "regexp("]
 
       elseif atrulename == 'import'
         let entered_atruleafter = matchstr(line, '.*@import\s\+\zs.*$')
@@ -639,7 +648,7 @@ function! csscomplete#CompleteCSS(findstart, base)
 
     endif
 
-    let values = ["charset", "page", "media", "import", "font-face", "namespace", "supports", "keyframes", "viewport"]
+    let values = ["charset", "page", "media", "import", "font-face", "namespace", "supports", "keyframes", "viewport", "document"]
 
     let entered_atrule = matchstr(line, '.*@\zs[a-zA-Z-]*$')
 
