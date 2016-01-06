@@ -14,7 +14,7 @@ Use pathogen or vundle is recommended. Vundle:
 
 Set `omnifunc` to `csscomplete#CompleteCSS`
 
-    autocmd FileType css set omnifunc=csscomplete#CompleteCSS noci
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 
 License
 -------
