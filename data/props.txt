@@ -97,6 +97,9 @@ column-width
 content
 counter-increment
 counter-reset
+cue
+cue-before
+cue-after
 cursor
 direction
 display
@@ -218,6 +221,9 @@ padding-top
 page-break-after
 page-break-before
 page-break-inside
+pause-before
+pause-after
+pause
 perspective
 perspective-origin
 pointer-events
@@ -226,6 +232,9 @@ prefix
 quotes
 range
 resize
+rest
+rest-before
+rest-after
 right
 ruby-align
 ruby-merge
@@ -241,6 +250,7 @@ scroll-snap-type-y
 shape-image-threshold
 shape-margin
 shape-outside
+speak
 speak-as
 suffix
 symbols
@@ -280,6 +290,14 @@ unicode-range
 user-zoom
 vertical-align
 visibility
+voice-balance
+voice-duration
+voice-family
+voice-pitch
+voice-rate
+voice-range
+voice-stress
+voice-volume
 white-space
 widows
 width
