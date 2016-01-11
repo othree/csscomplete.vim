@@ -1,5 +1,5 @@
 " Vim completion script
-" Language:	CSS
+" Language: CSS
 "           Based on MDN CSS Reference at 2016 Jan <https://developer.mozilla.org/en-US/docs/Web/CSS/Reference>
 "           plus CSS Speech Module <http://www.w3.org/TR/css3-speech/>
 " Maintainer: Kao, Wei-Ko(othree) ( othree AT gmail DOT com )
