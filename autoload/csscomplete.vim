@@ -119,7 +119,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     if prop == 'all'
       return wide_keywords
     elseif prop == 'additive-symbols'
-      let values = []
+      return wide_keywords
     elseif prop == 'align-content'
       let values = ["flex-start", "flex-end", "center", "space-between", "space-around", "stretch"]
     elseif prop == 'align-items'
@@ -127,9 +127,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'align-self'
       let values = ["auto", "flex-start", "flex-end", "center", "baseline", "stretch"]
     elseif prop == 'animation'
-      let values = []
+      let values = timing_functions + ["normal", "reverse", "alternate", "alternate-reverse"] + ["none", "forwards", "backwards", "both"] + ["running", "paused"]
     elseif prop == 'animation-delay'
-      let values = []
+      return wide_keywords
     elseif prop == 'animation-direction'
       let values = ["normal", "reverse", "alternate", "alternate-reverse"]
     elseif prop == 'animation-duration'
