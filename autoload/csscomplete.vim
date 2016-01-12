@@ -570,6 +570,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       endif
     endif
 
+    let values = wide_keywords + values
     " Complete values
     let entered_value = matchstr(line, '.\{-}\zs[a-zA-Z0-9#,.(_-]*$')
 
@@ -730,7 +731,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       endif
     endfor
 
-    return wide_keywords + res + res2
+    return res + res2
 
   endif
 
