@@ -133,13 +133,13 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'animation-direction'
       let values = ["normal", "reverse", "alternate", "alternate-reverse"]
     elseif prop == 'animation-duration'
-      let values = []
+      return wide_keywords
     elseif prop == 'animation-fill-mode'
       let values = ["none", "forwards", "backwards", "both"]
     elseif prop == 'animation-iteration-count'
-      let values = []
+      return wide_keywords
     elseif prop == 'animation-name'
-      let values = []
+      return wide_keywords
     elseif prop == 'animation-play-state'
       let values = ["running", "paused"]
     elseif prop == 'animation-timing-function'
@@ -220,7 +220,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'color'
       let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     elseif prop == 'columns'
-      let values = []
+      return wide_keywords
     elseif prop == 'column-count'
       let values = ['auto']
     elseif prop == 'column-fill'
@@ -262,9 +262,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'flex-flow'
       let values = ["row", "row-reverse", "column", "column-reverse", "nowrap", "wrap", "wrap-reverse"]
     elseif prop == 'flex-grow'
-      let values = []
+      return wide_keywords
     elseif prop == 'flex-shrink'
-      let values = []
+      return wide_keywords
     elseif prop == 'flex-wrap'
       let values = ["nowrap", "wrap", "wrap-reverse"]
     elseif prop == 'flex'
@@ -282,7 +282,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'font-size'
       let values = ["xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "larger", "smaller"]
     elseif prop == 'font-size-adjust'
-      let values = []
+      return wide_keywords
     elseif prop == 'font-stretch'
       let values = ["normal", "ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded"]
     elseif prop == 'font-style'
@@ -356,13 +356,13 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'mix-blend-mode'
       let values = ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"]
     elseif prop == 'opacity'
-      return []
+      return wide_keywords
     elseif prop == 'orientation'
       let values = ["auto", "portrait", "landscape"]
     elseif prop == 'orphans'
-      return []
+      return wide_keywords
     elseif prop == 'outline-offset'
-      let values = []
+      return wide_keywords
     elseif prop == 'outline-color'
       let values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"]
     elseif prop == 'outline-style'
@@ -385,11 +385,11 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop =~ 'overflow\%(-x\|-y\)\='
       let values = ["visible", "hidden", "scroll", "auto"]
     elseif prop == 'pad'
-      return []
+      return wide_keywords
     elseif prop == 'padding'
-      return []
+      return wide_keywords
     elseif prop =~ 'padding-\%(top\|right\|bottom\|left\|inline-start\|inline-end\|block-start\|block-end\)$'
-      return []
+      return wide_keywords
     elseif prop =~ 'page-break-\%(after\|before\)$'
       let values = ["auto", "always", "avoid", "left", "right", "recto", "verso"]
     elseif prop == 'page-break-inside'
@@ -405,7 +405,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'position'
       let values = ["static", "relative", "absolute", "fixed", "sticky"]
     elseif prop == 'prefix'
-      let values = []
+      return wide_keywords
     elseif prop == 'quotes'
       let values = ["none"]
     elseif prop == 'range'
@@ -431,9 +431,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'scroll-snap-type\%(-x\|-y\)\=$'
       let values = ["none", "mandatory", "proximity"]
     elseif prop == 'shape-image-threshold'
-      return []
+      return wide_keywords
     elseif prop == 'shape-margin'
-      return []
+      return wide_keywords
     elseif prop == 'shape-outside'
       let values = ["margin-box", "border-box", "padding-box", "content-box", 'inset(', 'circle(', 'ellipse(', 'polygon(', 'url(']
     elseif prop == 'speak'
@@ -443,9 +443,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'src'
       let values = ["url("]
     elseif prop == 'suffix'
-      return []
+      return wide_keywords
     elseif prop == 'symbols'
-      return []
+      return wide_keywords
     elseif prop == 'system'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^extends'
@@ -456,7 +456,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'table-layout'
       let values = ["auto", "fixed"]
     elseif prop == 'tab-size'
-      return []
+      return wide_keywords
     elseif prop == 'text-align'
       let values = ["start", "end", "left", "right", "center", "justify", "match-parent"]
     elseif prop == 'text-align-last'
@@ -508,9 +508,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'transition-property'
       let values = ["all", "none"] + s:values
     elseif prop == 'transition-duration'
-      return []
+      return wide_keywords
     elseif prop == 'transition-delay'
-      return []
+      return wide_keywords
     elseif prop == 'transition-timing-function'
       let values = timing_functions
     elseif prop == 'transition'
@@ -530,7 +530,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'voice-balance'
       let values = ["left", "center", "right", "leftwards", "rightwards"]
     elseif prop == 'voice-family'
-      return []
+      return wide_keywords
     elseif prop == 'voice-rate'
       let values = ["normal", "x-slow", "slow", "medium", "fast", "x-fast"]
     elseif prop == 'voice-pitch'
@@ -544,7 +544,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'white-space'
       let values = ["normal", "pre", "nowrap", "pre-wrap", "pre-line"]
     elseif prop == 'widows'
-      return []
+      return wide_keywords
     elseif prop == 'will-change'
       let values = ["auto", "scroll-position", "contents"] + s:values
     elseif prop == 'word-break'
