@@ -164,7 +164,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'background-size'
       let values = ["auto", "contain", "cover"]
     elseif prop == 'background'
-      let values = ["url(", "scroll", "fixed", "transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#", "none", "top", "center", "bottom" , "left", "right", "repeat", "repeat-x", "repeat-y", "no-repeat", "auto", "contain", "cover"]
+      let values = ["scroll", "fixed"] + color_values + ["url(", "none"] + ["top", "center", "bottom", "left", "right"] + ["repeat", "repeat-x", "repeat-y", "no-repeat"] + ["auto", "contain", "cover"]
     elseif prop == 'border-style'
       let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     elseif prop =~ 'border-\%(top\|right\|bottom\|left\|block-start\|block-end\)$'
