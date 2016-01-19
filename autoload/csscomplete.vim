@@ -634,7 +634,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       elseif atrulename == 'charset'
         let entered_atruleafter = matchstr(line, '.*@charset\s\+\zs.*$')
         let values = [
-          \ '"ANSI_X3.4-1968";', '"ISO_8859-1:1987";', '"ISO_8859-2:1987";', '"ISO_8859-3:1988";', '"ISO_8859-4:1988";', '"ISO_8859-5:1988";', 
+          \ '"UTF-8";', '"ANSI_X3.4-1968";', '"ISO_8859-1:1987";', '"ISO_8859-2:1987";', '"ISO_8859-3:1988";', '"ISO_8859-4:1988";', '"ISO_8859-5:1988";', 
           \ '"ISO_8859-6:1987";', '"ISO_8859-7:1987";', '"ISO_8859-8:1988";', '"ISO_8859-9:1989";', '"ISO-8859-10";', '"ISO_6937-2-add";', '"JIS_X0201";', 
           \ '"JIS_Encoding";', '"Shift_JIS";', '"Extended_UNIX_Code_Packed_Format_for_Japanese";', '"Extended_UNIX_Code_Fixed_Width_for_Japanese";',
           \ '"BS_4730";', '"SEN_850200_C";', '"IT";', '"ES";', '"DIN_66003";', '"NS_4551-1";', '"NF_Z_62-010";', '"ISO-10646-UTF-1";', '"ISO_646.basic:1983";',
@@ -648,7 +648,7 @@ function! csscomplete#CompleteCSS(findstart, base)
           \ '"ISO_8859-6-E";', '"ISO_8859-6-I";', '"T.101-G2";', '"ISO_8859-8-E";', '"ISO_8859-8-I";', '"CSN_369103";', '"JUS_I.B1.002";', '"IEC_P27-1";', 
           \ '"JUS_I.B1.003-serb";', '"JUS_I.B1.003-mac";', '"greek-ccitt";', '"NC_NC00-10:81";', '"ISO_6937-2-25";', '"GOST_19768-74";', '"ISO_8859-supp";', 
           \ '"ISO_10367-box";', '"latin-lap";', '"JIS_X0212-1990";', '"DS_2089";', '"us-dk";', '"dk-us";', '"KSC5636";', '"UNICODE-1-1-UTF-7";', '"ISO-2022-CN";', 
-          \ '"ISO-2022-CN-EXT";', '"UTF-8";', '"ISO-8859-13";', '"ISO-8859-14";', '"ISO-8859-15";', '"ISO-8859-16";', '"GBK";', '"GB18030";', '"OSD_EBCDIC_DF04_15";', 
+          \ '"ISO-2022-CN-EXT";', '"ISO-8859-13";', '"ISO-8859-14";', '"ISO-8859-15";', '"ISO-8859-16";', '"GBK";', '"GB18030";', '"OSD_EBCDIC_DF04_15";', 
           \ '"OSD_EBCDIC_DF03_IRV";', '"OSD_EBCDIC_DF04_1";', '"ISO-11548-1";', '"KZ-1048";', '"ISO-10646-UCS-2";', '"ISO-10646-UCS-4";', '"ISO-10646-UCS-Basic";',
           \ '"ISO-10646-Unicode-Latin1";', '"ISO-10646-J-1";', '"ISO-Unicode-IBM-1261";', '"ISO-Unicode-IBM-1268";', '"ISO-Unicode-IBM-1276";', 
           \ '"ISO-Unicode-IBM-1264";', '"ISO-Unicode-IBM-1265";', '"UNICODE-1-1";', '"SCSU";', '"UTF-7";', '"UTF-16BE";', '"UTF-16LE";', '"UTF-16";', '"CESU-8";', 
