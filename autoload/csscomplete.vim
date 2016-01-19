@@ -700,7 +700,7 @@ function! csscomplete#CompleteCSS(findstart, base)
 
       for m in values
         if m =~? '^'.entered_atruleafter
-          if m =~? '^"'
+          if entered_atruleafter =~? '^"' && m =~? '^"'
             let m = m[1:]
           endif
           if b:after =~? '"' && stridx(m, '"') > -1
