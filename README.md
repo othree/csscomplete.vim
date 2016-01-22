@@ -3,6 +3,10 @@ CSS Omni Complete Function for CSS3
 
 Update the bult-in CSS complete function to latest CSS standard.
 
+The latest stable file already in [vim repo][1], this repo will keep update for beta test.
+
+[1]:https://github.com/vim/vim/blob/master/runtime/autoload/csscomplete.vim
+
 Installation
 ------------
 
