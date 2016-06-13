@@ -260,6 +260,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["blur(", "brightness(", "contrast(", "drop-shadow(", "grayscale(", "hue-rotate(", "invert(", "opacity(", "sepia(", "saturate("]
     elseif prop == 'flex-basis'
       let values = ["auto", "content"]
+    elseif prop == 'flex-direction'
+      let values = ["row", "row-reverse", "column", "column-reverse"]
     elseif prop == 'flex-flow'
       let values = ["row", "row-reverse", "column", "column-reverse", "nowrap", "wrap", "wrap-reverse"]
     elseif prop == 'flex-grow'
