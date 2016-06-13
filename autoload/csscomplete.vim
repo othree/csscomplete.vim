@@ -111,7 +111,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     let prop = tolower(matchstr(line, '\zs[a-zA-Z-]*\ze\s*:[^:]\{-}$'))
 
     let wide_keywords = ["initial", "inherit", "unset"]
-    let color_values = ["transparent rgb( rgba( hsl( hsla( #"] + s:named_colors
+    let color_values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"] + s:named_colors
     let border_style_values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     let border_width_values = ["thin", "thick", "medium"]
     let list_style_type_values = ["decimal", "decimal-leading-zero", "arabic-indic", "armenian", "upper-armenian", "lower-armenian", "bengali", "cambodian", "khmer", "cjk-decimal", "devanagari", "georgian", "gujarati", "gurmukhi", "hebrew", "kannada", "lao", "malayalam", "mongolian", "myanmar", "oriya", "persian", "lower-roman", "upper-roman", "tamil", "telugu", "thai", "tibetan", "lower-alpha", "lower-latin", "upper-alpha", "upper-latin", "cjk-earthly-branch", "cjk-heavenly-stem", "lower-greek", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "disc", "circle", "square", "disclosure-open", "disclosure-closed"]
