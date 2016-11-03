@@ -144,6 +144,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["running", "paused"]
     elseif prop == 'animation-timing-function'
       let values = timing_functions
+    elseif prop == 'appearance'
+      let values = ["auto", "none"]
     elseif prop == 'background-attachment'
       let values = ["scroll", "fixed"]
     elseif prop == 'background-color'
@@ -272,7 +274,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'float'
       let values = ["left", "right", "none"]
     elseif prop == 'font-family'
-      let values = ["sans-serif", "serif", "monospace", "cursive", "fantasy"]
+      let values = ["sans-serif", "serif", "monospace", "cursive", "fantasy", "system-ui", "emoji", "math", "fangsong"]
     elseif prop == 'font-feature-settings'
       let values = ["normal", '"aalt"', '"abvf"', '"abvm"', '"abvs"', '"afrc"', '"akhn"', '"blwf"', '"blwm"', '"blws"', '"calt"', '"case"', '"ccmp"', '"cfar"', '"cjct"', '"clig"', '"cpct"', '"cpsp"', '"cswh"', '"curs"', '"cv', '"c2pc"', '"c2sc"', '"dist"', '"dlig"', '"dnom"', '"dtls"', '"expt"', '"falt"', '"fin2"', '"fin3"', '"fina"', '"flac"', '"frac"', '"fwid"', '"half"', '"haln"', '"halt"', '"hist"', '"hkna"', '"hlig"', '"hngl"', '"hojo"', '"hwid"', '"init"', '"isol"', '"ital"', '"jalt"', '"jp78"', '"jp83"', '"jp90"', '"jp04"', '"kern"', '"lfbd"', '"liga"', '"ljmo"', '"lnum"', '"locl"', '"ltra"', '"ltrm"', '"mark"', '"med2"', '"medi"', '"mgrk"', '"mkmk"', '"mset"', '"nalt"', '"nlck"', '"nukt"', '"numr"', '"onum"', '"opbd"', '"ordn"', '"ornm"', '"palt"', '"pcap"', '"pkna"', '"pnum"', '"pref"', '"pres"', '"pstf"', '"psts"', '"pwid"', '"qwid"', '"rand"', '"rclt"', '"rkrf"', '"rlig"', '"rphf"', '"rtbd"', '"rtla"', '"rtlm"', '"ruby"', '"salt"', '"sinf"', '"size"', '"smcp"', '"smpl"', '"ss01"', '"ss02"', '"ss03"', '"ss04"', '"ss05"', '"ss06"', '"ss07"', '"ss08"', '"ss09"', '"ss10"', '"ss11"', '"ss12"', '"ss13"', '"ss14"', '"ss15"', '"ss16"', '"ss17"', '"ss18"', '"ss19"', '"ss20"', '"ssty"', '"stch"', '"subs"', '"sups"', '"swsh"', '"titl"', '"tjmo"', '"tnam"', '"tnum"', '"trad"', '"twid"', '"unic"', '"valt"', '"vatu"', '"vert"', '"vhal"', '"vjmo"', '"vkna"', '"vkrn"', '"vpal"', '"vrt2"', '"zero"']
     elseif prop == 'font-kerning'
@@ -519,6 +521,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["normal", "embed", "isolate", "bidi-override", "isolate-override", "plaintext"]
     elseif prop == 'unicode-range'
       let values = ["U+"]
+    elseif prop == 'user-select'
+      let values = ["auto", "text", "none", "contain", "all"]
     elseif prop == 'user-zoom'
       let values = ["zoom", "fixed"]
     elseif prop == 'vertical-align'
