@@ -145,6 +145,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["running", "paused"]
     elseif prop == 'animation-timing-function'
       let values = timing_functions
+    elseif prop == 'appearance'
+      let values = ["auto", "none"]
     elseif prop == 'background-attachment'
       let values = ["scroll", "fixed"]
     elseif prop == 'background-color'
@@ -275,7 +277,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'float'
       let values = ["left", "right", "none"]
     elseif prop == 'font-family'
-      let values = ["sans-serif", "serif", "monospace", "cursive", "fantasy"]
+      let values = ["sans-serif", "serif", "monospace", "cursive", "fantasy", "system-ui", "emoji", "math", "fangsong"]
     elseif prop == 'font-feature-settings'
       let values = ["normal", '"aalt"', '"abvf"', '"abvm"', '"abvs"', '"afrc"', '"akhn"', '"blwf"', '"blwm"', '"blws"', '"calt"', '"case"', '"ccmp"', '"cfar"', '"cjct"', '"clig"', '"cpct"', '"cpsp"', '"cswh"', '"curs"', '"cv', '"c2pc"', '"c2sc"', '"dist"', '"dlig"', '"dnom"', '"dtls"', '"expt"', '"falt"', '"fin2"', '"fin3"', '"fina"', '"flac"', '"frac"', '"fwid"', '"half"', '"haln"', '"halt"', '"hist"', '"hkna"', '"hlig"', '"hngl"', '"hojo"', '"hwid"', '"init"', '"isol"', '"ital"', '"jalt"', '"jp78"', '"jp83"', '"jp90"', '"jp04"', '"kern"', '"lfbd"', '"liga"', '"ljmo"', '"lnum"', '"locl"', '"ltra"', '"ltrm"', '"mark"', '"med2"', '"medi"', '"mgrk"', '"mkmk"', '"mset"', '"nalt"', '"nlck"', '"nukt"', '"numr"', '"onum"', '"opbd"', '"ordn"', '"ornm"', '"palt"', '"pcap"', '"pkna"', '"pnum"', '"pref"', '"pres"', '"pstf"', '"psts"', '"pwid"', '"qwid"', '"rand"', '"rclt"', '"rkrf"', '"rlig"', '"rphf"', '"rtbd"', '"rtla"', '"rtlm"', '"ruby"', '"salt"', '"sinf"', '"size"', '"smcp"', '"smpl"', '"ss01"', '"ss02"', '"ss03"', '"ss04"', '"ss05"', '"ss06"', '"ss07"', '"ss08"', '"ss09"', '"ss10"', '"ss11"', '"ss12"', '"ss13"', '"ss14"', '"ss15"', '"ss16"', '"ss17"', '"ss18"', '"ss19"', '"ss20"', '"ssty"', '"stch"', '"subs"', '"sups"', '"swsh"', '"titl"', '"tjmo"', '"tnam"', '"tnum"', '"trad"', '"twid"', '"unic"', '"valt"', '"vatu"', '"vert"', '"vhal"', '"vjmo"', '"vkna"', '"vkrn"', '"vpal"', '"vrt2"', '"zero"']
     elseif prop == 'font-kerning'
@@ -522,6 +524,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["normal", "embed", "isolate", "bidi-override", "isolate-override", "plaintext"]
     elseif prop == 'unicode-range'
       let values = ["U+"]
+    elseif prop == 'user-select'
+      let values = ["auto", "text", "none", "contain", "all"]
     elseif prop == 'user-zoom'
       let values = ["zoom", "fixed"]
     elseif prop == 'vertical-align'
@@ -567,7 +571,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       " trying to complete pseudo-(class|element)
       let element = tolower(matchstr(line, '\zs[a-zA-Z1-6]*\ze:[^:[:space:]]\{-}$'))
       if stridx('a,abbr,address,area,article,aside,audio,b,base,bdi,bdo,bgsound,blockquote,body,br,button,canvas,caption,center,cite,code,col,colgroup,command,content,data,datalist,dd,del,details,dfn,dialog,div,dl,dt,element,em,embed,fieldset,figcaption,figure,font,footer,form,frame,frameset,head,header,hgroup,hr,html,i,iframe,image,img,input,ins,isindex,kbd,keygen,label,legend,li,link,main,map,mark,menu,menuitem,meta,meter,nav,nobr,noframes,noscript,object,ol,optgroup,option,output,p,param,picture,pre,progress,q,rp,rt,rtc,ruby,s,samp,script,section,select,shadow,small,source,span,strong,style,sub,summary,sup,table,tbody,td,template,textarea,tfoot,th,thead,time,title,tr,track,u,ul,var,video,wbr', ','.element.',') > -1
-        let values = ["active", "any", "checked", "default", "dir(", "disabled", "empty", "enabled", "first", "first-child", "first-of-type", "fullscreen", "focus", "hover", "indeterminate", "in-range", "invalid", "lang(", "last-child", "last-of-type", "left", "link", "not(", "nth-child(", "nth-last-child(", "nth-last-of-type(", "nth-of-type(", "only-child", "only-of-type", "optional", "out-of-range", "read-only", "read-write", "required", "right", "root", "scope", "target", "valid", "visited", "first-line", "first-letter", "before", "after", "selection", "backdrop"]
+        let values = ["active", "any", "any-link", "blank", "checked", "disabled", "enabled", "default", "dir(", "disabled", "drop", "drop(", "empty", "enabled", "first", "first-child", "first-of-type", "fullscreen", "focus", "focus-within", "has(", "hover", "indeterminate", "in-range", "invalid", "lang(", "last-child", "last-of-type", "left", "link", "matches(", "not(", "nth-child(", "nth-column(", "nth-last-child(", "nth-last-column(", "nth-last-of-type(", "nth-of-type(", "only-child", "only-of-type", "optional", "out-of-range", "paused", "placeholder-shown", "playing", "read-only", "read-write", "required", "right", "root", "scope", "target", "user-invalid", "valid", "visited", "first-line", "first-letter", "before", "after", "selection", "backdrop"]
       else
         return []
       endif
