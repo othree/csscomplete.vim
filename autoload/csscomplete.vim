@@ -116,6 +116,8 @@ function! csscomplete#CompleteCSS(findstart, base)
     let list_style_type_values = ["decimal", "decimal-leading-zero", "arabic-indic", "armenian", "upper-armenian", "lower-armenian", "bengali", "cambodian", "khmer", "cjk-decimal", "devanagari", "georgian", "gujarati", "gurmukhi", "hebrew", "kannada", "lao", "malayalam", "mongolian", "myanmar", "oriya", "persian", "lower-roman", "upper-roman", "tamil", "telugu", "thai", "tibetan", "lower-alpha", "lower-latin", "upper-alpha", "upper-latin", "cjk-earthly-branch", "cjk-heavenly-stem", "lower-greek", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "disc", "circle", "square", "disclosure-open", "disclosure-closed"]
     let timing_functions = ["cubic-bezier(", "steps(", "linear", "ease", "ease-in", "ease-in-out", "ease-out", "step-start", "step-end"]
 
+    let postfix = ";"
+
     if prop == 'all'
       let values = []
     elseif prop == 'additive-symbols'
@@ -128,6 +130,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto", "flex-start", "flex-end", "center", "baseline", "stretch"]
     elseif prop == 'animation'
       let values = timing_functions + ["normal", "reverse", "alternate", "alternate-reverse"] + ["none", "forwards", "backwards", "both"] + ["running", "paused"]
+      let postfix = ""
     elseif prop == 'animation-delay'
       let values = []
     elseif prop == 'animation-direction'
@@ -158,6 +161,7 @@ function! csscomplete#CompleteCSS(findstart, base)
         let values = ["top", "center", "bottom"]
       elseif vals =~ '^[a-zA-Z]\+\s\+\%([a-zA-Z]\+\)\?$'
         let values = ["left", "center", "right"]
+        let postfix = ""
       else
         return []
       endif
@@ -167,8 +171,10 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto", "contain", "cover"]
     elseif prop == 'background'
       let values = ["scroll", "fixed"] + color_values + ["url(", "none"] + ["top", "center", "bottom", "left", "right"] + ["repeat", "repeat-x", "repeat-y", "no-repeat"] + ["auto", "contain", "cover"]
+      let postfix = ""
     elseif prop =~ 'border\%(-top\|-right\|-bottom\|-left\|-block-start\|-block-end\)\?$'
       let vals = matchstr(line, '.*:\s*\zs.*')
+      let postfix = ""
       if vals =~ '^\%([a-zA-Z0-9.]\+\)\?$'
         let values = border_width_values
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+\%([a-zA-Z]\+\)\?$'
@@ -271,6 +277,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["nowrap", "wrap", "wrap-reverse"]
     elseif prop == 'flex'
       let values = ["nowrap", "wrap", "wrap-reverse"] + ["row", "row-reverse", "column", "column-reverse", "nowrap", "wrap", "wrap-reverse"] + ["auto", "content"]
+      let postfix = ""
     elseif prop == 'float'
       let values = ["left", "right", "none"]
     elseif prop == 'font-family'
@@ -309,6 +316,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["normal", "bold", "bolder", "lighter", "100", "200", "300", "400", "500", "600", "700", "800", "900"]
     elseif prop == 'font'
       let values = ["normal", "italic", "oblique", "small-caps", "bold", "bolder", "lighter", "100", "200", "300", "400", "500", "600", "700", "800", "900", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "larger", "smaller", "sans-serif", "serif", "monospace", "cursive", "fantasy", "caption", "icon", "menu", "message-box", "small-caption", "status-bar"]
+      let postfix = ""
     elseif prop =~ '^\%(height\|width\)$'
       let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
     elseif prop =~ '^\%(left\|rigth\)$'
@@ -566,6 +574,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     else
       " If no property match it is possible we are outside of {} and
       " trying to complete pseudo-(class|element)
+      let postfix = ""
       let element = tolower(matchstr(line, '\zs[a-zA-Z1-6]*\ze:[^:[:space:]]\{-}$'))
       if stridx('a,abbr,address,area,article,aside,audio,b,base,bdi,bdo,bgsound,blockquote,body,br,button,canvas,caption,center,cite,code,col,colgroup,command,content,data,datalist,dd,del,details,dfn,dialog,div,dl,dt,element,em,embed,fieldset,figcaption,figure,font,footer,form,frame,frameset,head,header,hgroup,hr,html,i,iframe,image,img,input,ins,isindex,kbd,keygen,label,legend,li,link,main,map,mark,menu,menuitem,meta,meter,nav,nobr,noframes,noscript,object,ol,optgroup,option,output,p,param,picture,pre,progress,q,rp,rt,rtc,ruby,s,samp,script,section,select,shadow,small,source,span,strong,style,sub,summary,sup,table,tbody,td,template,textarea,tfoot,th,thead,time,title,tr,track,u,ul,var,video,wbr', ','.element.',') > -1
         let values = ["active", "any", "any-link", "blank", "checked", "disabled", "enabled", "default", "dir(", "disabled", "drop", "drop(", "empty", "enabled", "first", "first-child", "first-of-type", "fullscreen", "focus", "focus-within", "has(", "hover", "indeterminate", "in-range", "invalid", "lang(", "last-child", "last-of-type", "left", "link", "matches(", "not(", "nth-child(", "nth-column(", "nth-last-child(", "nth-last-column(", "nth-last-of-type(", "nth-of-type(", "only-child", "only-of-type", "optional", "out-of-range", "paused", "placeholder-shown", "playing", "read-only", "read-write", "required", "right", "root", "scope", "target", "user-invalid", "valid", "visited", "first-line", "first-letter", "before", "after", "selection", "backdrop"]
@@ -579,10 +588,15 @@ function! csscomplete#CompleteCSS(findstart, base)
     let entered_value = matchstr(line, '.\{-}\zs[a-zA-Z0-9#,.(_-]*$')
 
     for m in values
+      let entry = m
+      if strlen(postfix) && m !~? '($'
+        let entry = {'word': m . postfix, 'abbr': m}
+      endif
+
       if m =~? '^'.entered_value
-        call add(res, m)
+        call add(res, entry)
       elseif m =~? entered_value
-        call add(res2, m)
+        call add(res2, entry)
       endif
     endfor
 
