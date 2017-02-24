@@ -173,7 +173,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'background'
       let values = ["scroll", "fixed"] + color_values + ["url(", "none"] + ["top", "center", "bottom", "left", "right"] + ["repeat", "repeat-x", "repeat-y", "no-repeat"] + ["auto", "contain", "cover"]
       let postfix = ""
-    elseif prop =~ 'border\%(-top\|-right\|-bottom\|-left\|-block-start\|-block-end\)\?$'
+    elseif prop =~ '^border\%(-top\|-right\|-bottom\|-left\|-block-start\|-block-end\)\?$'
       let vals = matchstr(line, '.*:\s*\zs.*')
       let postfix = ""
       if vals =~ '^\%([a-zA-Z0-9.]\+\)\?$'
@@ -185,11 +185,11 @@ function! csscomplete#CompleteCSS(findstart, base)
       else
         return []
       endif
-    elseif prop =~ 'border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-color'
+    elseif prop =~ '^border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-color'
       let values = color_values
-    elseif prop =~ 'border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-style'
+    elseif prop =~ '^border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-style'
       let values = border_style_values
-    elseif prop =~ 'border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-width'
+    elseif prop =~ '^border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-width'
       let values = border_width_values
     elseif prop == 'border-color'
       let values = color_values
@@ -205,7 +205,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["inset"]
     elseif prop == 'box-sizing'
       let values = ["border-box", "content-box"]
-    elseif prop =~ 'break-\%(before\|after\)'
+    elseif prop =~ '^break-\%(before\|after\)'
       let values = ["auto", "always", "avoid", "left", "right", "page", "column", "region", "recto", "verso", "avoid-page", "avoid-column", "avoid-region"]
     elseif prop == 'break-inside'
       let values = ["auto", "avoid", "avoid-page", "avoid-column", "avoid-region"]
@@ -248,9 +248,9 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto"]
     elseif prop == 'content'
       let values = ["normal", "attr(", "open-quote", "close-quote", "no-open-quote", "no-close-quote"]
-    elseif prop =~ 'counter-\%(increment\|reset\)$'
+    elseif prop =~ '^counter-\%(increment\|reset\)$'
       let values = ["none"]
-    elseif prop =~ 'cue\%(-after\|-before\)\=$'
+    elseif prop =~ '^cue\%(-after\|-before\)\=$'
       let values = ["url("]
     elseif prop == 'cursor'
       let values = ["url(", "auto", "crosshair", "default", "pointer", "move", "e-resize", "ne-resize", "nw-resize", "n-resize", "se-resize", "sw-resize", "s-resize", "w-resize", "text", "wait", "help", "progress"]
@@ -352,7 +352,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = list_style_type_values + ["inside", "outside"] + ["url(", "none"]
     elseif prop == 'margin'
       let values = ["auto"]
-    elseif prop =~ 'margin-\%(right\|left\|top\|bottom\|block-start\|block-end\|inline-start\|inline-end\)$'
+    elseif prop =~ '^margin-\%(right\|left\|top\|bottom\|block-start\|block-end\|inline-start\|inline-end\)$'
       let values = ["auto"]
     elseif prop == 'marks'
       let values = ["crop", "cross", "none"]
@@ -395,19 +395,19 @@ function! csscomplete#CompleteCSS(findstart, base)
       endif
     elseif prop == 'overflow-wrap'
       let values = ["normal", "break-word"]
-    elseif prop =~ 'overflow\%(-x\|-y\)\='
+    elseif prop =~ '^overflow\%(-x\|-y\)\='
       let values = ["visible", "hidden", "scroll", "auto"]
     elseif prop == 'pad'
       let values = []
     elseif prop == 'padding'
       let values = []
-    elseif prop =~ 'padding-\%(top\|right\|bottom\|left\|inline-start\|inline-end\|block-start\|block-end\)$'
+    elseif prop =~ '^padding-\%(top\|right\|bottom\|left\|inline-start\|inline-end\|block-start\|block-end\)$'
       let values = []
-    elseif prop =~ 'page-break-\%(after\|before\)$'
+    elseif prop =~ '^page-break-\%(after\|before\)$'
       let values = ["auto", "always", "avoid", "left", "right", "recto", "verso"]
     elseif prop == 'page-break-inside'
       let values = ["auto", "avoid"]
-    elseif prop =~ 'pause\%(-after\|-before\)\=$'
+    elseif prop =~ '^pause\%(-after\|-before\)\=$'
       let values = ["none", "x-weak", "weak", "medium", "strong", "x-strong"]
     elseif prop == 'perspective'
       let values = ["none"]
@@ -425,7 +425,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto", "infinite"]
     elseif prop == 'resize'
       let values = ["none", "both", "horizontal", "vertical"]
-    elseif prop =~ 'rest\%(-after\|-before\)\=$'
+    elseif prop =~ '^rest\%(-after\|-before\)\=$'
       let values = ["none", "x-weak", "weak", "medium", "strong", "x-strong"]
     elseif prop == 'ruby-align'
       let values = ["start", "center", "space-between", "space-around"]
