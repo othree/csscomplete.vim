@@ -117,7 +117,20 @@ function! csscomplete#CompleteCSS(findstart, base)
     let list_style_type_values = ["decimal", "decimal-leading-zero", "arabic-indic", "armenian", "upper-armenian", "lower-armenian", "bengali", "cambodian", "khmer", "cjk-decimal", "devanagari", "georgian", "gujarati", "gurmukhi", "hebrew", "kannada", "lao", "malayalam", "mongolian", "myanmar", "oriya", "persian", "lower-roman", "upper-roman", "tamil", "telugu", "thai", "tibetan", "lower-alpha", "lower-latin", "upper-alpha", "upper-latin", "cjk-earthly-branch", "cjk-heavenly-stem", "lower-greek", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "disc", "circle", "square", "disclosure-open", "disclosure-closed"]
     let timing_functions = ["cubic-bezier(", "steps(", "linear", "ease", "ease-in", "ease-in-out", "ease-out", "step-start", "step-end"]
 
-    let postfix = ";"
+    if exists('g:csscomplete_postfix')
+      let postfix = g:csscomplete_postfix
+    endif
+
+    if exists('l:csscomplete_postfix')
+      let postfix = l:csscomplete_postfix
+    endif
+
+    if !exists('postfix')
+      let postfix = ";"
+      if index(['sass', 'stylus'], &filetype) >= 0
+        let postfix = ""
+      endif
+    endif
 
     if prop == 'all'
       let values = []
