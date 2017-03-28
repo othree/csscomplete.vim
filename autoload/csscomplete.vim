@@ -121,8 +121,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let postfix = g:csscomplete_postfix
     endif
 
-    if exists('l:csscomplete_postfix')
-      let postfix = l:csscomplete_postfix
+    if exists('b:csscomplete_postfix')
+      let postfix = b:csscomplete_postfix
     endif
 
     if !exists('postfix')
