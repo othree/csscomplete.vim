@@ -381,6 +381,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["auto"]
     elseif prop == 'mix-blend-mode'
       let values = ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"]
+    elseif prop == 'object-fit'
+      let values = ['fill', 'contain', 'cover', 'scale-down']
     elseif prop == 'opacity'
       let values = []
     elseif prop == 'orientation'
