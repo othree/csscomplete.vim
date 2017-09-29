@@ -512,7 +512,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'text-orientation'
       let values = ["mixed", "upright", "sideways", "sideways-right", "use-glyph-orientation"]
     elseif prop == 'text-overflow'
-      let values = ["clip", "ellipsis"]
+      let values = ["clip", "ellipsis", "fade", "fade("]
     elseif prop == 'text-rendering'
       let values = ["auto", "optimizeSpeed", "optimizeLegibility", "geometricPrecision"]
     elseif prop == 'text-shadow'
