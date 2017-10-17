@@ -115,6 +115,7 @@ flex-shrink
 flex-wrap
 float
 font
+font-display
 font-family
 font-feature-settings
 font-kerning
