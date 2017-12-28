@@ -93,14 +93,17 @@ function! csscomplete#CompleteCSS(findstart, base)
   if len(borders) == 0 || borders[max(keys(borders))] =~ '^\%(openbrace\|semicolon\|opencomm\|closecomm\|style\)$'
     " Complete properties
 
-
     let entered_property = matchstr(line, '.\{-}\zs[a-zA-Z-]*$')
 
     for m in s:values
+      let postfix = ''
+      if strridx(after, ':') < 0
+        let postfix = ': '
+      endif 
       if m =~? '^'.entered_property
-        call add(res, m . ': ')
+        call add(res, m . postfix)
       elseif m =~? entered_property
-        call add(res2, m . ': ')
+        call add(res2, m . postfix)
       endif
     endfor
 
