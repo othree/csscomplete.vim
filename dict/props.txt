@@ -209,6 +209,9 @@ overflow
 overflow-wrap
 overflow-x
 overflow-y
+overscroll-behavior
+overscroll-behavior-x
+overscroll-behavior-y
 pad
 padding
 padding-block-end
