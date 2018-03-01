@@ -267,6 +267,9 @@ text-combine-upright
 text-decoration
 text-decoration-color
 text-decoration-line
+text-decoration-skip
+text-decoration-skip-ink
+text-decoration-style
 text-emphasis
 text-emphasis-color
 text-emphasis-position
