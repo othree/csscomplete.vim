@@ -171,7 +171,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'background-color'
       let values = color_values
     elseif prop == 'background-image'
-      let values = ["url(", "none"]
+      let values = ["url(", "none", "linear-gradient("]
     elseif prop == 'background-position'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^\%([a-zA-Z]\+\)\?$'
@@ -187,7 +187,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'background-size'
       let values = ["auto", "contain", "cover"]
     elseif prop == 'background'
-      let values = ["scroll", "fixed"] + color_values + ["url(", "none"] + ["top", "center", "bottom", "left", "right"] + ["repeat", "repeat-x", "repeat-y", "no-repeat"] + ["auto", "contain", "cover"]
+      let values = ["scroll", "fixed"] + color_values + ["url(", "none", "linear-gradient("] + ["top", "center", "bottom", "left", "right"] + ["repeat", "repeat-x", "repeat-y", "no-repeat"] + ["auto", "contain", "cover"]
       let postfix = ""
     elseif prop =~ '^border\%(-top\|-right\|-bottom\|-left\|-block-start\|-block-end\)\?$'
       let vals = matchstr(line, '.*:\s*\zs.*')
