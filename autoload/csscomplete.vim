@@ -117,6 +117,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     let color_values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"] + s:named_colors
     let border_style_values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     let border_width_values = ["thin", "thick", "medium"]
+    let length_values = ["calc("]
     let list_style_type_values = ["decimal", "decimal-leading-zero", "arabic-indic", "armenian", "upper-armenian", "lower-armenian", "bengali", "cambodian", "khmer", "cjk-decimal", "devanagari", "georgian", "gujarati", "gurmukhi", "hebrew", "kannada", "lao", "malayalam", "mongolian", "myanmar", "oriya", "persian", "lower-roman", "upper-roman", "tamil", "telugu", "thai", "tibetan", "lower-alpha", "lower-latin", "upper-alpha", "upper-latin", "cjk-earthly-branch", "cjk-heavenly-stem", "lower-greek", "hiragana", "hiragana-iroha", "katakana", "katakana-iroha", "disc", "circle", "square", "disclosure-open", "disclosure-closed"]
     let timing_functions = ["cubic-bezier(", "steps(", "linear", "ease", "ease-in", "ease-in-out", "ease-out", "step-start", "step-end"]
 
@@ -206,13 +207,13 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop =~ '^border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-style'
       let values = border_style_values
     elseif prop =~ '^border-\%(top\|right\|bottom\|left\|block-start\|block-end\)-width'
-      let values = border_width_values
+      let values = border_width_values + length_values
     elseif prop == 'border-color'
       let values = color_values
     elseif prop == 'border-style'
       let values = border_style_values
     elseif prop == 'border-width'
-      let values = border_width_values
+      let values = border_width_values + length_values
     elseif prop == 'bottom'
       let values = ["auto"]
     elseif prop == 'box-decoration-break'
@@ -246,7 +247,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'column-rule-style'
       let values = border_style_values
     elseif prop == 'column-rule-width'
-      let values = border_width_values
+      let values = border_width_values + length_values
     elseif prop == 'column-rule'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^\%([a-zA-Z0-9.]\+\)\?$'
@@ -261,7 +262,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'column-span'
       let values = ["none", "all"]
     elseif prop == 'column-width'
-      let values = ["auto"]
+      let values = ["auto"] + length_values
     elseif prop == 'content'
       let values = ["normal", "attr(", "open-quote", "close-quote", "no-open-quote", "no-close-quote"]
     elseif prop =~ '^counter-\%(increment\|reset\)$'
@@ -339,7 +340,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = ["normal", "italic", "oblique", "small-caps", "bold", "bolder", "lighter", "100", "200", "300", "400", "500", "600", "700", "800", "900", "xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large", "larger", "smaller", "sans-serif", "serif", "monospace", "system-ui", "emoji", "math", "fangsong", "cursive", "fantasy", "caption", "icon", "menu", "message-box", "small-caption", "status-bar"]
       let postfix = ""
     elseif prop =~ '^\%(height\|width\)$'
-      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
+      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"] + length_values
     elseif prop =~ '^\%(left\|rigth\)$'
       let values = ["auto"]
     elseif prop == 'image-rendering'
@@ -369,9 +370,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'list-style'
       let values = list_style_type_values + ["inside", "outside"] + ["url(", "none"]
     elseif prop == 'margin'
-      let values = ["auto"]
+      let values = ["auto"] + length_values
     elseif prop =~ '^margin-\%(right\|left\|top\|bottom\|block-start\|block-end\|inline-start\|inline-end\)$'
-      let values = ["auto"]
+      let values = ["auto"] + length_values
     elseif prop == 'marks'
       let values = ["crop", "cross", "none"]
     elseif prop == 'mask'
@@ -379,9 +380,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'mask-type'
       let values = ["luminance", "alpha"]
     elseif prop == '\%(max\|min\)-\%(block\|inline\)-size'
-      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
+      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"] + length_values
     elseif prop == '\%(max\|min\)-\%(height\|width\)'
-      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"]
+      let values = ["auto", "border-box", "content-box", "max-content", "min-content", "available", "fit-content"] + length_values
     elseif prop == '\%(max\|min\)-zoom'
       let values = ["auto"]
     elseif prop == 'mix-blend-mode'
@@ -401,7 +402,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'outline-style'
       let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     elseif prop == 'outline-width'
-      let values = ["thin", "thick", "medium"]
+      let values = ["thin", "thick", "medium"] + length_values
     elseif prop == 'outline'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^\%([a-zA-Z0-9,()#]\+\)\?$'
@@ -422,9 +423,9 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'pad'
       let values = []
     elseif prop == 'padding'
-      let values = []
+      let values = [] + length_values
     elseif prop =~ '^padding-\%(top\|right\|bottom\|left\|inline-start\|inline-end\|block-start\|block-end\)$'
-      let values = []
+      let values = [] + length_values
     elseif prop =~ '^page-break-\%(after\|before\)$'
       let values = ["auto", "always", "avoid", "left", "right", "recto", "verso"]
     elseif prop == 'page-break-inside'
