@@ -113,7 +113,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     " Get name of property
     let prop = tolower(matchstr(line, '\zs[a-zA-Z-]*\ze\s*:[^:]\{-}$'))
 
-    let wide_keywords = ["initial", "inherit", "unset"]
+    let wide_keywords = ["initial", "inherit", "unset", "var("]
     let color_values = ["transparent", "rgb(", "rgba(", "hsl(", "hsla(", "#"] + s:named_colors
     let border_style_values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     let border_width_values = ["thin", "thick", "medium"]
