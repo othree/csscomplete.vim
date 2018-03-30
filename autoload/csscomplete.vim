@@ -402,7 +402,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'outline-style'
       let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
     elseif prop == 'outline-width'
-      let values = ["thin", "thick", "medium"] + length_values
+      let values = border_width_values + length_values
     elseif prop == 'outline'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^\%([a-zA-Z0-9,()#]\+\)\?$'
@@ -410,7 +410,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       elseif vals =~ '^[a-zA-Z0-9,()#]\+\s\+\%([a-zA-Z]\+\)\?$'
         let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
       elseif vals =~ '^[a-zA-Z0-9,()#]\+\s\+[a-zA-Z]\+\s\+\%([a-zA-Z(]\+\)\?$'
-        let values = ["thin", "thick", "medium"]
+        let values = border_width_values
       else
         return []
       endif
