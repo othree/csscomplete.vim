@@ -194,7 +194,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       let vals = matchstr(line, '.*:\s*\zs.*')
       let postfix = ""
       if vals =~ '^\%([a-zA-Z0-9.]\+\)\?$'
-        let values = border_width_values
+        let values = border_width_values + length_values
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+\%([a-zA-Z]\+\)\?$'
         let values = border_style_values
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+[a-zA-Z]\+\s\+\%([a-zA-Z(]\+\)\?$'
@@ -251,7 +251,7 @@ function! csscomplete#CompleteCSS(findstart, base)
     elseif prop == 'column-rule'
       let vals = matchstr(line, '.*:\s*\zs.*')
       if vals =~ '^\%([a-zA-Z0-9.]\+\)\?$'
-        let values = border_width_values
+        let values = border_width_values + length_values
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+\%([a-zA-Z]\+\)\?$'
         let values = border_style_values
       elseif vals =~ '^[a-zA-Z0-9.]\+\s\+[a-zA-Z]\+\s\+\%([a-zA-Z(]\+\)\?$'
@@ -410,7 +410,7 @@ function! csscomplete#CompleteCSS(findstart, base)
       elseif vals =~ '^[a-zA-Z0-9,()#]\+\s\+\%([a-zA-Z]\+\)\?$'
         let values = ["none", "hidden", "dotted", "dashed", "solid", "double", "groove", "ridge", "inset", "outset"]
       elseif vals =~ '^[a-zA-Z0-9,()#]\+\s\+[a-zA-Z]\+\s\+\%([a-zA-Z(]\+\)\?$'
-        let values = border_width_values
+        let values = border_width_values + length_values
       else
         return []
       endif
