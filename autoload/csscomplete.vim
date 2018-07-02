@@ -20,7 +20,6 @@ function! csscomplete#CompleteCSS(findstart, base)
     while start >= 0 && line[start - 1] =~ '\%(\k\|-\)'
       let start -= 1
     endwhile
-    let b:after = line[compl_begin :]
     let b:compl_context = line[0:compl_begin]
     return start
   endif
@@ -38,11 +37,14 @@ function! csscomplete#CompleteCSS(findstart, base)
   " 5. if @ complete at-rule
   " 6. if ! complete important
   if exists("b:compl_context")
+    let line = getline('.')
+    let compl_begin = col('.') - 2
+    let after = line[compl_begin:]
     let line = b:compl_context
-    let after = b:after
     unlet! b:compl_context
   else
     let line = a:base
+    let after = ''
   endif
 
   let res = []
