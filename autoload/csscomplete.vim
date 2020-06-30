@@ -212,6 +212,8 @@ function! csscomplete#CompleteCSS(findstart, base)
       let values = border_width_values + length_values
     elseif prop == 'border-color'
       let values = color_values
+    elseif prop == 'border-collapse'
+      let values = ["collapse", "separate"]
     elseif prop == 'border-style'
       let values = border_style_values
     elseif prop == 'border-width'
