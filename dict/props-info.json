@@ -1,5 +1,0 @@
-{
-  "all": {
-    "info": "Shorthand that resets all properties except 'direction' and 'unicode-bidi'.",
-  },
-}
